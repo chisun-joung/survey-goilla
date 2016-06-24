@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('surveyGorillaApp')
+    .module('accountModule',['ui.router'])
     .config(config);
 
   /* @ngInject */

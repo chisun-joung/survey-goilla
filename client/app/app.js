@@ -9,7 +9,11 @@
 		  'ngSanitize',
 		  'btford.socket-io',
 		  'ui.router',
-		  'ui.bootstrap'
+		  'ui.bootstrap',
+      'mainModule',
+      'adminModule',
+      'accountModule'
+
 		])
     .config(config)
     .factory('authInterceptor', authInterceptor)
@@ -62,4 +66,4 @@
     };
   }
 
-})();  
+})();

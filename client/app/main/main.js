@@ -3,11 +3,12 @@
   'use strict';
 
   angular
-    .module('surveyGorillaApp')
+    .module('mainModule',
+    ['ui.router'])
     .config(config);
 
   /* @ngInject */
-  function config($stateProvider) { 
+  function config($stateProvider) {
     $stateProvider
     .state('main', {
       url: '/',
@@ -16,4 +17,4 @@
     });
   }
 
-})();  
+})();

@@ -3,7 +3,8 @@
   'use strict';
 
   angular
-    .module('surveyGorillaApp')
+    .module('adminModule',
+    ['ui.router'])
     .config(config);
 
   function config($stateProvider) {
