@@ -12,7 +12,7 @@
     this.setGroup = setGroup;
 
     var _store = {};
-    var _getGrouInstance = function(id, groupData) {
+    var _getGroupInstance = function(id, groupData) {
       var instance = this._store[id];
 
       if(instance) {
@@ -32,9 +32,41 @@
     var _load = function(id, deferred) {
       var self = this
         , group = new Group();
+
+      group
+        .load(id)
+        .then(function(groupData){
+          var group = self._getGroupInstance(groupData.id, groupData);
+          deferred.resolve(group);
+        }, function() {
+          deferred.reject();
+        });
+    }
+  }
+
+  function getGroup(id) {
+    var deferred = $q.defer()
+      , group = this._search(id);
+
+    if(group) {
+      deferred.resolve(group);
+    } else {
+      this._load(id, deferred);
     }
 
+    return deferred.promise;
+  }
 
+  function setGroup(groupData) {
+    var self = this
+      , group = this._serach(groupData.id);
+
+    if(group) {
+      group.setData(groupData);
+    } else {
+      group = self._getGroupInstance(groupData);
+    }
+    return group;
   }
 
 })();
